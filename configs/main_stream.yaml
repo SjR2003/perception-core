@@ -1,0 +1,18 @@
+receive_config:
+  stream_ids:
+    - cam1
+    - cam2
+    - cam3
+
+batch:
+  max_batch_size: 3
+  max_wait_ms: 5
+
+model:
+  model_name: yolo11n
+  model_path: E:/projects/Ai/TraVis/perception/perception/data/models/yolo11n.pt
+  img_size: (640, 640)
+  batch_size: 3
+  fp16: false
+
+num_workers: 4

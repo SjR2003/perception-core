@@ -1,0 +1,6 @@
+**/__pycache__
+**/temp
+*.onnx
+*.pt
+*.engine
+**/.vscode
