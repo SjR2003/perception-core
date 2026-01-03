@@ -1,14 +1,18 @@
 from argparse import ArgumentParser
 import yaml
-import re
+
 
 def extract_port(addr: str) -> str:
     return addr.rsplit(":", 1)[-1]
 
+
 if __name__ == "__main__":
     arg_parser = ArgumentParser(description="Generate .env from network config")
     arg_parser.add_argument(
-        "--network_config", type=str, default="configs/network.yaml", help="Path to network configuration YAML file"
+        "--network_config",
+        type=str,
+        default="configs/network.yaml",
+        help="Path to network configuration YAML file",
     )
     args = arg_parser.parse_args()
 

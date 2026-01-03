@@ -1,8 +1,9 @@
-import time
-import logging
 from functools import wraps
+import logging
+import time
 
 logging.getLogger(__name__)
+
 
 def measure_latency(func):
     @wraps(func)

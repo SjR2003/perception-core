@@ -1,5 +1,6 @@
-import yaml
 from pathlib import Path
+import yaml
+
 
 def load_yaml(path=None):
     if path is None:
