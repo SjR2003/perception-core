@@ -3,6 +3,3 @@ zmq:
 
   perception_endpoint: "tcp://127.0.0.1:7510"
   proxy_endpoint: "tcp://127.0.0.1:7511"
-
-rest:
-  control_endpoint: "tcp://127.0.0.1:7508"

@@ -6,7 +6,7 @@ import signal
 import time
 
 from network.proxy import ZmqProxy
-from pipelines.pipline_process import (
+from pipelines.pipeline_process import (
     start_main_stream_process,
     start_sub_stream_process,
 )

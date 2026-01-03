@@ -69,20 +69,26 @@ perception/
 ├── main.py
 ├── pipelines/
 │   ├── stream_pipeline.py
-│   └── pipline_process.py
+│   └── pipeline_process.py
 ├── preprocess/
 │   ├── batch_scheduler.py
-│   └── batch.py
+│   └── batch_process.py
 ├── models/
-│   └── yolo/
+│   └── detection/
 │       ├── exporter.py
 │       ├── loader.py
 │       ├── trt_detector.py
 │       ├── detector.py
+│       ├── detection_baseclass.py
 │       └── tracker.py
 ├── network/
-│   ├── zmq_handler.py
+│   ├── zmq_publisher.py
+│   ├── zmq_subscriber.py
 │   └── proxy.py
+├── schemas/
+│   ├── batch.py
+│   ├── stream_metadata.py
+│   └── stream_packet.py
 ├── utils/
 │   ├── logger.py
 │   ├── latency_logger.py
@@ -101,7 +107,6 @@ The system is fully configurable via YAML files:
 * **network.yaml**
 
   * ZMQ endpoints
-  * REST API endpoint (coming soon)
   * KAFKA endpoints (coming soon)
 * **main_stream.yaml**
 
