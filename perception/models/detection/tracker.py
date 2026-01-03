@@ -4,6 +4,7 @@ import numpy as np
 import torch
 
 from models.detection.detection_baseclass import DetectionBackend
+from schemas.tracker_metadata import TrackerData, TrackerPacket
 from utils.latency_logger import measure_latency
 
 
@@ -28,16 +29,16 @@ class YoloTensorRTTracker:
         return self.__trackers[stream_id]
 
     @torch.no_grad()
-    def infer(self, batch_tensor: torch.Tensor, metas: List[Dict]) -> List:
+    def infer(self, batch_tensor: torch.Tensor, metas: List[Dict]) -> TrackerPacket:
         outputs = self.__backend.infer(batch_tensor)
-        self.track(outputs, metas)
+        return self.__track(outputs, metas)
 
     @measure_latency
-    def track(self, detections, metas):
+    def __track(self, detections, metas) -> TrackerPacket:
         results = []
         for out, meta in zip(detections, metas):
             if meta.is_dummy:
-                results.append({"meta": meta, "tracks": []})
+                results.append(TrackerData(metadata=meta, tracks=np.ndarray([])))
                 continue
 
             stream_id = meta.stream_id
@@ -57,7 +58,6 @@ class YoloTensorRTTracker:
                 w = int(meta.width)
 
                 tracks = tracker.update(dets, [h, w])
+            results.append(TrackerData(metadata=meta, tracks=tracks))
 
-            results.append({"meta": meta, "tracks": tracks})
-
-        return results
+        return TrackerPacket(result=results)

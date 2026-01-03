@@ -87,6 +87,8 @@ perception/
 │   └── proxy.py
 ├── schemas/
 │   ├── batch.py
+│   ├── detector_metadata.py
+│   ├── tracker_metadata.py
 │   ├── stream_metadata.py
 │   └── stream_packet.py
 ├── utils/

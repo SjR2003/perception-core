@@ -95,4 +95,4 @@ class StreamProcessor:
                 continue
 
             if self.__pub_node:
-                self.__pub_node.publish(topic="perception", metadata=outputs)
+                self.__pub_node.publish(topic="perception", metadata=outputs.model_dump())
